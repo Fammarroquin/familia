@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocina - Familia Marroquín Uculmana</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cabecera flotante -->
+    <header id="main-header">
+        <h1>Familia Marroquín Uculmana</h1>
+        <nav id="main-nav" class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarNav" class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nuestra-historia.html">Nuestra Historia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cumpleanos.html">Cumpleaños</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cocina.html">Cocina</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog de Comentarios</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido de la página de cocina -->
+    <main class="container mt-5">
+        <h2>Calendario de Cocina</h2>
+        <p>A continuación se muestra la asignación de personas para la cocina cada mes.</p>
+
+        <!-- Formulario de cocina por mes -->
+        <form id="form-cocina">
+            <div class="form-group">
+                <label for="mes">Selecciona un mes:</label>
+                <select id="mes" class="form-control">
+                    <option value="enero">Enero</option>
+                    <option value="febrero">Febrero</option>
+                    <option value="marzo">Marzo</option>
+                    <!-- Añadir los meses restantes -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="personas">Asignación de personas:</label>
+                <textarea id="personas" class="form-control" rows="5" readonly>
+                    1 de Enero - José Marroquín
+                    2 de Enero - María Pérez
+                    3 de Enero - Juan López
+                    <!-- Añadir más asignaciones -->
+                </textarea>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        Familia Marroquín
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

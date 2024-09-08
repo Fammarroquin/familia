@@ -1,0 +1,302 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    margin-top: 120px; /* Ajustar según el tamaño del header */
+}
+.slider {
+    margin-top: 120px; /* Asegura que el slider tenga suficiente espacio desde el header */
+}
+/* Cabecera flotante */
+#main-header {
+    position: fixed;    
+    top: 0;
+    width: 100%;
+    background-color: #fff; /* Fondo blanco para el header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Espacio entre título, icono y menú */
+    align-items: center; /* Alinea verticalmente */
+    padding: 10px 20px;
+}
+
+#site-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+#site-icon {
+    width: 90px; /* Ajusta el tamaño del icono según el tamaño del header */
+    height: 90px; /* Ajusta el tamaño del icono según el tamaño del header */
+    border-radius: 80%; /* Borde circular */
+    object-fit: cover;
+    border: 3px solid #ea4335; /* Borde rojo */
+    margin-left: 15px; /* Espacio entre el título y el icono */
+}
+
+/* Estilos del menú hamburguesa */
+.navbar-toggler {
+    border: none;
+    background: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,...'); /* Imagen del ícono hamburguesa */
+    width: 30px;
+    height: 30px;
+}
+
+/* Menú de navegación */
+#main-nav {
+    background-color: #ea4335; /* Rojo para el menú */
+}
+
+/* Estilos para el menú hamburguesa */
+#navbarNav {
+    display: none; /* Ocultar por defecto en pantallas pequeñas */
+}
+
+#navbarNav.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Ajusta según sea necesario */
+    right: 0;
+    background-color: #ea4335; /* Fondo rojo para el menú hamburguesa */
+    width: 100vw; /* Ancho completo de la ventana */
+    max-width: 100%; /* Evitar que se expanda más allá del ancho de la ventana */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0; /* Quitar padding para alinear los elementos */
+}
+
+#navbarNav .nav-item {
+    width: 100%; /* Asegura que los elementos ocupen todo el ancho del menú */
+}
+
+#navbarNav .nav-link {
+    padding: 15px;
+    text-align: center;
+    color: #fff; /* Color blanco para el texto */
+    display: block; /* Asegura que los enlaces ocupen toda la fila */
+    border-bottom: 1px solid #fff; /* Línea separadora entre los enlaces */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    box-sizing: border-box; /* Asegura que el padding no expanda el ancho del elemento */
+    transition: background-color 0.3s, transform 0.3s; /* Transición para el fondo y el tamaño */
+}
+
+#navbarNav .nav-link:last-child {
+    border-bottom: none; /* Quita la línea del último enlace */
+}
+
+/* Efecto hover en el menú hamburguesa */
+#navbarNav .nav-link:hover {
+    background-color: #d32f2f; /* Color de fondo más oscuro al pasar el cursor */
+    transform: scale(1.05); /* Agranda el enlace al pasar el cursor */
+}
+
+/* Mostrar el menú hamburguesa solo en pantallas pequeñas */
+@media (max-width: 768px) {
+    #site-title {
+        display: none; /* Ocultar el título en pantallas pequeñas */
+    }
+
+    #site-icon {
+        display: block; /* Mostrar el icono en pantallas pequeñas */
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    #navbarNav.show {
+        display: flex;
+        flex-direction: column; /* Asegura que los enlaces estén uno debajo del otro */
+        width: 100vw; /* Ancho completo del contenedor */
+    }
+}
+
+/* Mostrar el menú normal en pantallas grandes */
+@media (min-width: 769px) {
+    #navbarNav {
+        display: flex !important; /* Forzar el display para el menú normal */
+    }
+
+    #navbarNav.show {
+        display: none; /* Asegurarse de que el menú hamburguesa no se muestre en pantallas grandes */
+    }
+
+    .navbar-toggler {
+        display: none; /* Ocultar el botón hamburguesa en pantallas grandes */
+    }
+
+    #site-title {
+        display: block; /* Mostrar el título en pantallas grandes */
+    }
+
+    #site-icon {
+        display: block; /* Mostrar el icono en pantallas grandes */
+    }
+}
+
+/* Slider de imágenes */
+.slider {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 80px; /* Ajuste para la cabecera flotante */
+    padding: 20px 0;
+}
+
+.slider img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.slider img:hover {
+    transform: scale(1.1);
+}
+
+/* Secciones */
+section {
+    padding: 30px 20px;
+}
+
+/* Estilo para las imágenes en las secciones */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Footer */
+footer {
+    background-color: #f5f5f5;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+/* Sección de Nuestra Historia */
+.story-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.story-image {
+    width: 100%;
+    border-radius: 8px; /* Puntas redondeadas */
+    border: 8px solid #f7f30d; /* Borde azul grueso */
+    transition: transform 0.3s ease;
+}
+
+.story-image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.story-text {
+    background-color: #f7e7a6; /* Color de fondo amarillo */
+    color: #6c757d; /* Color de texto plomo */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Para la visualización de la imagen en pantalla completa */
+.story-image-wrapper img:focus {
+    cursor: zoom-in;
+}
+
+.story-image-wrapper img:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 1000;
+    border: 5px solid #4285f4; /* Borde azul cuando en pantalla completa */
+}
+
+/* Ajuste para que sea responsive */
+@media (max-width: 768px) {
+    .story-text {
+        margin-top: 10px;
+    }
+}
+/* Estilo para el botón de "Ver Fotos" */
+.btn-brown {
+    background-color: #6f4f28; /* Color marrón */
+    color: #fff; /* Texto blanco */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-brown:hover {
+    background-color: #5a3d1e; /* Color marrón más oscuro al pasar el cursor */
+}
+/* Estilos para el banner flotante */
+.alert-banner {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00; /* Color de fondo del banner */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-banner p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.banner-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#cerrar-banner {
+    background-color: #ea4335;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#ver-lista-cocineros {
+    display: none; /* Ocultar inicialmente */
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
