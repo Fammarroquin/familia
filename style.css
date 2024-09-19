@@ -1,3 +1,7 @@
+/*CAMBIAR MAYUSCULA TODOS LOS IMPUT*/
+input[type="text"], input[type="email"], input[type="date"] {
+    text-transform: uppercase;
+}
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
@@ -187,7 +191,7 @@ section {
 footer {
     background-color: #f5f5f5;
     padding: 20px;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
     text-align: center;
@@ -313,3 +317,39 @@ footer {
 }
 
 /* Para pantallas pequeñas (teléfonos) */
+.formulario-oculto {
+    display: none; /* Oculta el formulario inicialmente */
+}
+#formulario-registro {
+    margin-bottom: 100px; /* Añadir margen inferior para evitar que el footer lo cubra */
+}
+.alert-banner {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00; /* Color de fondo del banner */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-banner p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+#cerrar-banner {
+    background-color: #28a745;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+

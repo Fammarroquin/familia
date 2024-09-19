@@ -4,13 +4,6 @@ document.getElementById('quien-cocina-banner').addEventListener('click', functio
     window.location.href = 'cocina.html';
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.querySelector('.navbar-toggler');
-    const navMenu = document.querySelector('#navbarNav');
-
-    menuToggle.addEventListener('click', function () {
-        navMenu.classList.toggle('show');
-    });
 
     // Cerrar el menú cuando se haga clic en un enlace
     navMenu.querySelectorAll('a').forEach(link => {
@@ -58,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function () {
 document.getElementById('cerrar-banner').addEventListener('click', function() {
     document.getElementById('quien-cocina-banner').style.display = 'none';
 });
+
+
 
 
 
