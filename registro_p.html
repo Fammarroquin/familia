@@ -102,6 +102,23 @@
     Tu navegador no soporta el elemento de audio.
 </audio>
 
+<section id="lista-registros" class="container mt-5">
+    <h2>Registros</h2>
+    <table id="tabla-registros" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Parentesco</th>
+                <th>Nombres</th>
+                <th>Fecha de Cumpleaños</th>
+                <th>Edad</th>
+                <th>Apodo</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
 
     <script>
         // Mostrar campos adicionales para "nieto"
@@ -187,6 +204,64 @@ function cargarParentescoNieto() {
             document.getElementById("registro-form").reset();  // Limpiar el formulario
         });
         </script>
+        <script>
+            // Función para cargar los registros y mostrarlos en la tabla
+            function cargarRegistros() {
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbxXjUvof0uqffLfrGK4-y8sbRo1AleGzi5U8V0itKXaxtiQXGx5XgsfeWzcgUdpAkGF/exec';  // URL de obtenerRegistros
+                fetch(scriptURL)
+                    .then(response => response.json())
+                    .then(data => {
+                        const tbody = document.getElementById("tabla-registros").getElementsByTagName('tbody')[0];
+                        tbody.innerHTML = '';  // Limpiar la tabla
+                        
+                        data.forEach(registro => {
+                            const row = tbody.insertRow();
+                            row.innerHTML = `
+                                <td><input type="text" class="form-control" value="${registro.parentesco}" /></td>
+                                <td><input type="text" class="form-control" value="${registro.nombres}" /></td>
+                                <td><input type="date" class="form-control" value="${registro.fecha_cumple}" /></td>
+                                <td><input type="text" class="form-control" value="${registro.edad}" /></td>
+                                <td><input type="text" class="form-control" value="${registro.apodo}" /></td>
+                                <td><input type="email" class="form-control" value="${registro.email}" /></td>
+                                <td>
+                                    <button class="btn btn-success" onclick="guardarCambios(${registro.id})">Guardar</button>
+                                </td>
+                            `;
+                        });
+                    })
+                    .catch(error => console.error('Error al cargar los registros!', error));
+            }
+            
+            // Llamar a la función cuando cargue la página
+            cargarRegistros();
+            </script>
+<script>
+    // Función para guardar los cambios de un registro
+    function guardarCambios(id) {
+        const row = document.querySelector(`#tabla-registros tbody tr:nth-child(${id - 1})`);
+        const formData = new FormData();
+        
+        formData.append('id', id);
+        formData.append('parentesco', row.cells[0].querySelector('input').value);
+        formData.append('nombres', row.cells[1].querySelector('input').value);
+        formData.append('fecha_cumple', row.cells[2].querySelector('input').value);
+        formData.append('edad', row.cells[3].querySelector('input').value);
+        formData.append('apodo', row.cells[4].querySelector('input').value);
+        formData.append('email', row.cells[5].querySelector('input').value);
+    
+        fetch('https://script.google.com/macros/s/AKfycbwGy7SZZFS0dsfX9T5lxxntpFx1w6zzErzz34z/exec', {  // URL de actualizarRegistro
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert(result);  // Mensaje de éxito
+            cargarRegistros();  // Recargar la tabla
+        })
+        .catch(error => console.error('Error!', error));
+    }
+    </script>
+                
         
 </body>
 </html>
