@@ -1,4 +1,9 @@
 
+document.querySelector('.navbar-toggler').addEventListener('click', function() {
+    document.querySelector('#navbarNav').classList.toggle('show');
+  });
+  
+
 // Mostrar la página de cocina al hacer clic en el banner
 document.getElementById('quien-cocina-banner').addEventListener('click', function() {
     window.location.href = 'cocina.html';
@@ -25,7 +30,7 @@ document.getElementById('quien-cocina-banner').addEventListener('click', functio
             navMenu.classList.remove('show');
         }
     });
-});
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const storyImage = document.querySelector('.story-image');
