@@ -11,7 +11,7 @@
     <header id="main-header">
         <h1>Familia Marroquín Uculmana</h1>
         <nav id="main-nav" class="navbar navbar-expand-lg navbar-light">
-            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarNav" class="collapse navbar-collapse">
@@ -20,7 +20,7 @@
                         <a class="nav-link" href="index.html#home">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nuestra-historia.html">Nuestra Historia</a> <!-- Enlace hacia la misma página -->
+                        <a class="nav-link" href="nuestra-historia.html">Nuestra Historia</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#cumpleanos">Cumpleaños</a>
@@ -32,6 +32,8 @@
             </div>
         </nav>
     </header>
+    
+    
     
     <section id="nuestra-historia" class="container mt-5">
         <h2>Nuestra Historia</h2>
@@ -61,11 +63,20 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+   
+    <audio id="background-music" loop>
+        <source src="music/fondo.mp3" type="audio/mpeg">
+        <source src="music/fondo.ogg" type="audio/ogg">
+        Tu navegador no soporta la reproducción de música.
+    </audio>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var audio = document.getElementById("background-music");
             audio.volume = 0.1; // Ajusta el volumen (de 0.0 a 1.0)
+            audio.play().catch(function(error) {
+                console.log("La reproducción automática fue bloqueada por el navegador.");
+            });
         });
     </script>
 </body>
