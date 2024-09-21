@@ -58,6 +58,37 @@ document.getElementById('cerrar-banner').addEventListener('click', function() {
 });
 
 
+function loadRegistros() {
+    google.script.run.withSuccessHandler(function(data) {
+        var tableBody = document.getElementById('registroTableBody');
+        tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+        
+        data.forEach(function(row) {
+            var newRow = document.createElement('tr');
+            
+            // Agregar cada dato como una celda de la tabla
+            row.forEach(function(cell) {
+                var cellElement = document.createElement('td');
+                cellElement.textContent = cell;
+                newRow.appendChild(cellElement);
+            });
+
+            tableBody.appendChild(newRow);
+        });
+    }).getRegistros();  // Función del lado del servidor que obtiene los registros
+}
+function getRegistros() {
+    var sheet = SpreadsheetApp.openById('1ZDvkYuITxKN3oA120uIEwNEzDuEqk7Z6mXiEBqbgxq8').getSheetByName('FORM');
+    var data = sheet.getDataRange().getValues(); // Obtén todos los datos de la hoja
+  
+    // Devuelve los datos al frontend
+    return data.slice(1); // Omitir la primera fila (encabezados)
+  }
+  
+window.onload = function() {
+    loadRegistros();
+};
+
 
 
 

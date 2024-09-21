@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regístrate</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header id="main-header">
+        <h1>Familia Marroquín Uculmana</h1>
+        <nav id="main-nav" class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarNav" class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home"><i class="fas fa-home" style="color: #3498db;"></i>
+                            Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nuestra-historia.html"><i class="fas fa-history"
+                                style="color: #e74c3c;"></i> Nuestra Historia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrox.html"><i class="fas fa-user-plus"
+                                style="color: #f39c12;"></i> Regístrate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrados.html"><i class="fas fa-comments"
+                                style="color: #2ecc71;"></i> registrados</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <h1><i class="fas fa-address-card" style="color: #9b59b6;"></i> Registro de Familia</h1>
+        <form id="registro-form">
+            <label for="parentesco">De Papá TOTO y Mamá PETA, soy:</label>
+            <div>
+                <input type="radio" id="hijo" name="parentesco" value="hijo">
+                <label for="hijo"><i class="fas fa-child" style="color: #3498db;"></i> Soy hijo</label>
+            </div>
+            <div>
+                <input type="radio" id="nieto" name="parentesco" value="nieto">
+                <label for="nieto"><i class="fas fa-child" style="color: #e67e22;"></i> Soy nieto</label>
+            </div>
+            <div>
+                <input type="radio" id="bisnieto" name="parentesco" value="bisnieto">
+                <label for="bisnieto"><i class="fas fa-child" style="color: #2ecc71;"></i> Soy bisnieto</label>
+            </div>
+            <!-- Agregar la opción Nuera/Yerno -->
+            <div>
+                <input type="radio" id="nuerayerno" name="parentesco" value="nuerayerno">
+                <label for="nuerayerno"><i class="fas fa-users" style="color: #f39c12;"></i> Formalmente Casada(o) Nuera/Yerno</label>
+            </div>
+
+            <!-- Campo que se muestra solo para nietos, bisnietos o nuera/yerno -->
+            <div class="form-group" id="padreContainer" style="display: none;">
+                <label for="padre" id="padreLabel"><i class="fas fa-child" style="color: #8e44ad;"></i> Tu papá
+                    es:</label>
+                <select class="form-control" id="padre" name="padre">
+                    <option value="">Selecciona </option> <!-- Valor por defecto -->
+                </select>
+            </div>
+
+
+
+            <!-- Campos comunes -->
+            <div class="form-group">
+                <label for="nombres"><i class="fas fa-user" style="color: #e74c3c;"></i> Nombres:</label>
+                <input type="text" class="form-control" id="nombres" name="nombres" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="fecha_cumple"><i class="fas fa-birthday-cake" style="color: #f1c40f;"></i> Fecha de
+                        cumpleaños:</label>
+                    <input type="date" class="form-control" id="fecha_cumple" name="fecha_cumple" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="edad"><i class="fas fa-hourglass-half" style="color: #3498db;"></i> Edad actual:</label>
+                    <input type="text" class="form-control" id="edad" name="edad" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="apodo"><i class="fas fa-user-ninja" style="color: #9b59b6;"></i> Más conocido como:</label>
+                <input type="text" class="form-control" id="apodo" name="apodo" required>
+            </div>
+            <!-- Campo de celular -->
+            <div class="form-group">
+                <label for="celular"><i class="fas fa-mobile-alt" style="color: #2ecc71;"></i> Número de
+                    celular:</label>
+                <input type="tel" class="form-control" id="celular" name="celular"
+                    placeholder="Ingrese su número de celular">
+            </div>
+
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope" style="color: #2ecc71;"></i> Correo electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar</button>
+        </form>
+    </div>
+
+    <!-- Banner de confirmación -->
+    <div id="mensaje-banner" class="alert-banner" style="display: none;">
+        <p id="mensaje-banner-texto"></p>
+        <button id="cerrar-banner" class="btn"><i class="fas fa-times-circle"></i> Cerrar</button>
+    </div>
+
+    <!-- Audio de éxito -->
+    <audio id="sonido-exito">
+        <source src="music/mario-bros-wonderful.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        menuToggle.addEventListener('click', function () {
+            navMenu.classList.toggle('show');
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Código para el menú hamburguesa
+            document.querySelector('.navbar-toggler').addEventListener('click', function () {
+                document.querySelector('#navbarNav').classList.toggle('show');
+            });
+        });
+        // Asegurarse de que el menú hamburguesa se oculte cuando la ventana cambie de tamaño
+        window.addEventListener('resize', function () {
+            if (window.innerWidth >= 769) {
+                navMenu.classList.remove('show');
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scriptx.js"></script>
+
+</body>
+
+</html>
