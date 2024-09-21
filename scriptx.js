@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 fetchParentescoData('nuerayerno'); // Filtrar y cargar hijos y nietos
             } else {
                 padreContainer.style.display = 'block'; // Mostrar lista de padres para nietos o bisnietos
-                padreLabel.innerHTML = '<i class="fas fa-child"></i> Tu papá es:'; // Restaurar el texto original de la etiqueta
+                padreLabel.innerHTML = '<i class="fas fa-child"></i> Tu Papá/Mamá es:'; // Restaurar el texto original de la etiqueta
                 padreSelect.innerHTML = '<option value="">Selecciona </option>'; // Restaurar el texto del option por defecto
                 fetchParentescoData(parentesco); // Filtrar según el parentesco seleccionado
             }
