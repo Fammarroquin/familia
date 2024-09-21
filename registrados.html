@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header id="main-header">
         <h1>Familia Marroquín Uculmana</h1>
@@ -40,32 +38,62 @@
         </nav>
     </header>
 
+    <iframe src="https://script.google.com/macros/s/AKfycbxXjUvof0uqffLfrGK4-y8sbRo1AleGzi5U8V0itKXaxtiQXGx5XgsfeWzcgUdpAkGF/exec"></iframe>
+    <!-- Sección para mostrar registros -->
     <div class="container mt-5">
-        <h1><i class="fas fa-list-alt" style="color: #9b59b6;"></i> Lista de Registrados</h1>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
+        <h1 class="text-center">Lista de Registrados</h1>
+        <div id="lista-registrados" class="table-responsive">
+            <!-- Aquí se cargarán los datos obtenidos desde Google Apps Script -->
+            <table class="table table-bordered">
+                <thead class="thead-dark">
                     <tr>
-                        <th><i class="fas fa-user"></i> Nombres</th>
-                        <th><i class="fas fa-birthday-cake"></i> Fecha de Cumpleaños</th>
-                        <th><i class="fas fa-hourglass-half"></i> Edad</th>
-                        <th><i class="fas fa-user-ninja"></i> Apodo</th>
-                        <th><i class="fas fa-envelope"></i> Email</th>
-                        <th><i class="fas fa-users"></i> Parentesco</th>
-                        <th><i class="fas fa-mobile-alt"></i> Celular</th>
+                        <th>Nombres</th>
+                        <th>Fecha de Cumpleaños</th>
+                        <th>Edad</th>
+                        <th>Apodo</th>
+                        <th>Email</th>
+                        <th>Parentesco</th>
+                        <th>Celular</th>
                     </tr>
                 </thead>
-                <tbody id="registrados-lista">
-                    <!-- Aquí se llenarán los registros dinámicamente -->
+                <tbody id="datos-registrados">
+                    <!-- Los registros aparecerán aquí -->
                 </tbody>
             </table>
         </div>
     </div>
 
+    <!-- Cargar datos desde Google Apps Script usando fetch -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('https://script.google.com/macros/s/AKfycbxXjUvof0uqffLfrGK4-y8sbRo1AleGzi5U8V0itKXaxtiQXGx5XgsfeWzcgUdpAkGF/exec')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('datos-registrados');
+                    tbody.innerHTML = ''; // Limpiar cualquier contenido previo
+
+                    // Recorrer los datos y agregarlos a la tabla
+                    data.forEach(item => {
+                        const row = `
+                            <tr>
+                                <td>${item.nombres}</td>
+                                <td>${new Date(item.fecha_cumple).toLocaleDateString('es-ES')}</td>
+                                <td>${item.edad}</td>
+                                <td>${item.apodo}</td>
+                                <td>${item.email}</td>
+                                <td>${item.parentesco}</td>
+                                <td>${item.celular}</td>
+                            </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                })
+                .catch(error => console.error('Error al obtener los datos:', error));
+        });
+    </script>
+
+    <!-- Librerías de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="scriptx.js"></script>
 </body>
-
 </html>
