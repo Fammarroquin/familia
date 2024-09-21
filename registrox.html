@@ -43,6 +43,7 @@
 
     <div class="container mt-5">
         <h1><i class="fas fa-address-card" style="color: #9b59b6;"></i> Registro de Familia</h1>
+        
         <form id="registro-form">
             <label for="parentesco">De Papá TOTO y Mamá PETA, soy:</label>
             <div>
@@ -76,7 +77,7 @@
 
             <!-- Campos comunes -->
             <div class="form-group">
-                <label for="nombres"><i class="fas fa-user" style="color: #e74c3c;"></i> Nombres:</label>
+                <label for="nombres"><i class="fas fa-user" style="color: #e74c3c;"></i> Nombres y Apellidos (en ese orden OJO):</label>
                 <input type="text" class="form-control" id="nombres" name="nombres" required>
             </div>
             <div class="form-row">
@@ -104,7 +105,7 @@
 
             <div class="form-group">
                 <label for="email"><i class="fas fa-envelope" style="color: #2ecc71;"></i> Correo electrónico:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email"  class="form-control" id="email" name="email" placeholder="si no tienes ingresar : famxmarroquin@gmail.com" required >
             </div>
             <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar</button>
         </form>
